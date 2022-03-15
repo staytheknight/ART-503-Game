@@ -3,6 +3,8 @@ using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
+	[SerializeField] private float s_JumpForce = 200f;
+
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
@@ -39,7 +41,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool crouch, bool jump)
+	public void Move(float move, bool crouch, bool jump, bool jumpCancel)
 	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -90,11 +92,30 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 		// If the player should jump...
-		if (m_Grounded && jump)
-		{
+		
+		// Big Jump
+		if (jump)
+		{	
+			Debug.Log("Normal Jump");
 			// Add a vertical force to the player.
-			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			//m_Grounded = false;
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce);
+			
+			//m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			jump = false;
+		}
+
+		// Small Jump
+		if (jumpCancel) 
+		{
+			Debug.Log("Jump Cancel");
+			//m_Grounded = false;
+			if(m_Rigidbody2D.velocity.y > s_JumpForce) 
+			{
+				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, s_JumpForce);
+				//m_Rigidbody2D.AddForce(new Vector2(0f, s_JumpForce));
+			}
+			jumpCancel = false;
 		}
 	}
 
@@ -108,5 +129,10 @@ public class CharacterController2D : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	public bool getGrounded() 
+	{
+		return this.m_Grounded;
 	}
 }

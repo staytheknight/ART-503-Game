@@ -10,17 +10,27 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
+	bool jumpCancel = false;
 	bool crouch = false;
+	bool grounded = false;
 	
 	// Update is called once per frame
 	void Update () {
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-		if (Input.GetButtonDown("Jump"))
+		grounded = controller.getGrounded();
+
+		if (Input.GetButtonDown("Jump") && grounded)
 		{
-			jump = true;
+			jump = true;		
 		}
+
+		if (Input.GetButtonUp("Jump") && !grounded) 
+		{
+			jumpCancel = true;
+		}
+
 
 		if (Input.GetButtonDown("Crouch"))
 		{
@@ -35,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jumpCancel);
 		jump = false;
 	}
 }
