@@ -13,8 +13,15 @@ public class PowerupManager : MonoBehaviour
         // If the player connects with the Mushroom upgrade:
         if (collision.collider.CompareTag("MushPower"))
         {
-            // Turns on the mushromm platform script
+            // Turns on the mushroom platform script
             GetComponent<MushPlatformSpawn>().enabled = true;
+            // Replaces the powerup plinth with empty plinth
+            collision.gameObject.GetComponent<SpriteRenderer>().sprite = powerupGot;
+        }
+        if (collision.collider.CompareTag("WindPower"))
+        {
+            // Turns on the air platform script
+            GetComponent<WindPower>().enabled = true;
             // Replaces the powerup plinth with empty plinth
             collision.gameObject.GetComponent<SpriteRenderer>().sprite = powerupGot;
         }
