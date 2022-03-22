@@ -89,7 +89,7 @@ public class WindPower : MonoBehaviour
     void windGraphic(int sideFlag) 
     {
         GameObject player = GameObject.Find("Player");                      // Gets position of player
-        Vector3 spriteLoc = new Vector3(0,0,0);                             // Creates a new vector for the location of the sprite
+        Vector3 spriteLoc = new Vector3(0,-0.4f,0);                             // Creates a new vector for the location of the sprite
 
         // If the player clicked on the left side of the screen, the graphic will appear on the left side of the character
         if(sideFlag == 0)
