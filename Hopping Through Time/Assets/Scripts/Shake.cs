@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MushPlatform : MonoBehaviour
+public class Shake : MonoBehaviour
 {   
 
     [SerializeField] float shakeAmt;                //Force of shake

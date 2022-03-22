@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7704752732291051008}
   - component: {fileID: 7704752732291051009}
   - component: {fileID: 7704752732291051010}
-  - component: {fileID: 7080993177641841072}
+  - component: {fileID: 9164251584288012731}
   m_Layer: 0
   m_Name: mushplaform
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8396654, y: 0.22085983}
   m_EdgeRadius: 0
---- !u!114 &7080993177641841072
+--- !u!114 &9164251584288012731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,5 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18864003c63df824bac9b23187b25eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmt: 10
+  shakeAmt: 20
+  waitShake: 2
   OriginalPos: {x: 0, y: 0}
