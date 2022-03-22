@@ -9,6 +9,8 @@ public class WindPower : MonoBehaviour
     [SerializeField] float yForce;
     int sideFlag = 0;
 
+    [SerializeField] GameObject cloudSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class WindPower : MonoBehaviour
                 }
 
                 StartCoroutine("Wind", sideFlag);
+                windGraphic(sideFlag);
             }
 
             // Clicked on right side of screen
@@ -44,12 +47,9 @@ public class WindPower : MonoBehaviour
                 }
 
                 StartCoroutine("Wind", sideFlag);
-            }
-            
-            
+                windGraphic(sideFlag);
+            }      
         }
-
-
     }
 
     IEnumerator Wind(int sideFlag)
@@ -60,6 +60,7 @@ public class WindPower : MonoBehaviour
         // Wait one second before triggering the impulse
         yield return new WaitForSeconds(1f);
         // The player controllers need to be turned off in order for proper physics to work
+        // TODO : probably put the toggle in a grounded check
         GetComponent<CharacterController2D>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
 
@@ -78,9 +79,34 @@ public class WindPower : MonoBehaviour
 
         // Turn the controllers back on after 0.75 seconds
         yield return new WaitForSeconds(0.75f);
+
+        // Turns character controller back on
         GetComponent<CharacterController2D>().enabled = true;
         GetComponent<PlayerMovement>().enabled = true;
 
+    }
+
+    void windGraphic(int sideFlag) 
+    {
+        GameObject player = GameObject.Find("Player");                      // Gets position of player
+        Vector3 spriteLoc = new Vector3(0,0,0);                             // Creates a new vector for the location of the sprite
+
+        // If the player clicked on the left side of the screen, the graphic will appear on the left side of the character
+        if(sideFlag == 0)
+        {
+            Vector3 leftOffset = new Vector3(-0.5f,0,0);
+            spriteLoc += leftOffset;
+        }
+        // If the player clicked on the right side of the screen, the graphic will appear on the right side of the character
+        if(sideFlag == 1)
+        {
+            Vector3 rightOffset = new Vector3(0.5f,0,0);
+            spriteLoc +=  rightOffset;
+        }
+        
+        spriteLoc += player.transform.position;                             // Adds the location of the sprite to where the player is
+        Instantiate(cloudSprite, spriteLoc, Quaternion.identity);           // Creates the sprite
+        
     }
 
 

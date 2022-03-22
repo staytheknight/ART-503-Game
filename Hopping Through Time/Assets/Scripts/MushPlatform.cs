@@ -6,6 +6,7 @@ public class MushPlatform : MonoBehaviour
 {   
 
     [SerializeField] float shakeAmt;                //Force of shake
+    [SerializeField] float waitShake;               // wait x seconds before starting shake
     private bool shaking = false;                   // Is shaking toggle
     public Vector2 OriginalPos;                     // Original position of the platforms
 
@@ -28,7 +29,7 @@ public class MushPlatform : MonoBehaviour
     // Toggles shake after 2 seconds
     IEnumerator ShakeNow()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(waitShake);
 
         if (shaking == false)
         {
