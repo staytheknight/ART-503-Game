@@ -15,7 +15,7 @@ public class WindGraphic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine("SpriteSwap"); 
+        StartCoroutine("SpriteSwap"); 
         //player = GameObject.Find("Player"); 
         //spriteLoc = gameObject.transform.position;
     }

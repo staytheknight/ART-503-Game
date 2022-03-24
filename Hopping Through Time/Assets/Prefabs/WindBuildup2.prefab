@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18864003c63df824bac9b23187b25eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmt: 15
+  shakeAmt: 10
   waitShake: 0
   OriginalPos: {x: 0, y: 0}
 --- !u!114 &392715798582727077
