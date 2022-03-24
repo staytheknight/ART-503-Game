@@ -22,6 +22,8 @@ public class PowerupManager : MonoBehaviour
             mushPowerGot = true;
             // Replaces the powerup plinth with empty plinth
             collision.gameObject.GetComponent<SpriteRenderer>().sprite = powerupGot;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<CircleCollider2D>().enabled = false;
 
 
             // If the mushroom power is gotten while the wind power is obtained, turn off the wind power
@@ -38,6 +40,8 @@ public class PowerupManager : MonoBehaviour
             windPowerGot = true;
             // Replaces the powerup plinth with empty plinth
             collision.gameObject.GetComponent<SpriteRenderer>().sprite = powerupGot;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<CircleCollider2D>().enabled = false;
 
             // If the wind power is gotten while the mushroom power is obtained, turn off the mushroom power
             // TODO : There is a better implementation, will need to remove later
