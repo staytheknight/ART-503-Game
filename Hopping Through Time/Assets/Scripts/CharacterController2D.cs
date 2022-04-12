@@ -98,8 +98,19 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
-
+	// Duplicate of the original flip method, however this one control rotation
+	// This is due to the fact that other scripts interact with the scale and things get wonky
 	private void Flip()
+	{
+		// Switch the way the player is labelled as facing.
+		m_FacingRight = !m_FacingRight;
+
+		Transform player = gameObject.GetComponent<Transform>();
+		player.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+
+	}
+
+	/*private void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
@@ -108,5 +119,5 @@ public class CharacterController2D : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	}
+	}*/
 }
