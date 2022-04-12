@@ -7,6 +7,7 @@ public class WindPower : MonoBehaviour
     [SerializeField] Rigidbody2D rb2d;                // Assigned object to be affected by force
     [SerializeField] float xForce;
     [SerializeField] float yForce;
+    [SerializeField] int powerCount = 1;
     int sideFlag = 0;
 
     [SerializeField] GameObject cloudSprite;
@@ -22,6 +23,9 @@ public class WindPower : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if(powerCount >= 1) 
+            {
+            StartCoroutine("timer");
             Vector2 mousePos = Input.mousePosition;
 
             // Clicked on left side of screen
@@ -48,6 +52,7 @@ public class WindPower : MonoBehaviour
 
                 StartCoroutine("Wind", sideFlag);
                 windGraphic(sideFlag);
+            }
             }      
         }
     }
@@ -107,6 +112,14 @@ public class WindPower : MonoBehaviour
         spriteLoc += player.transform.position;                             // Adds the location of the sprite to where the player is
         Instantiate(cloudSprite, spriteLoc, Quaternion.identity);           // Creates the sprite
         
+    }
+
+    // Function to control how many platforms are available after x seconds
+    IEnumerator timer()
+    {
+        powerCount --;
+        yield return new WaitForSeconds(2f);
+        powerCount ++;
     }
 
 
