@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MushPower
   - WindPower
+  - ShrinkPower
+  - DisguisePower
   layers:
   - Default
   - TransparentFX

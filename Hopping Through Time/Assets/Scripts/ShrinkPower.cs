@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShrinkPower : MonoBehaviour
 {
-    [SerializeField] Sprite normalPlayer;
-    [SerializeField] Sprite smallPlayer;
     float objectScaleNormalX = 0.75f;
     float objectScaleNormalY = 0.75f;
     float objectScaleSmallX = 0.5f;

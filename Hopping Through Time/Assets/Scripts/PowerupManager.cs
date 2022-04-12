@@ -8,6 +8,8 @@ public class PowerupManager : MonoBehaviour
     [SerializeField] Sprite powerupGot;
     [SerializeField] bool mushPowerGot = false;
     [SerializeField] bool windPowerGot = false;
+    [SerializeField] bool shrinkPowerGot = false;
+    [SerializeField] bool disguisePowerGot = false;
     [SerializeField] GameObject mushPower;
     [SerializeField] GameObject windPower;
 
@@ -50,6 +52,26 @@ public class PowerupManager : MonoBehaviour
                 GetComponent<MushPlatformSpawn>().enabled = false;
             }
         }
+        if (collision.collider.CompareTag("ShrinkPower"))
+        {
+            // Turns on the air platform script
+            GetComponent<ShrinkPower>().enabled = true;
+            shrinkPowerGot = true;
+            // Replaces the powerup plinth with empty plinth
+            collision.gameObject.GetComponent<SpriteRenderer>().sprite = powerupGot;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        }
+        if (collision.collider.CompareTag("DisguisePower"))
+        {
+            // Turns on the air platform script
+            GetComponent<DisguisePower>().enabled = true;
+            shrinkPowerGot = true;
+            // Replaces the powerup plinth with empty plinth
+            collision.gameObject.GetComponent<SpriteRenderer>().sprite = powerupGot;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        }
     }
 
 
@@ -81,6 +103,7 @@ public class PowerupManager : MonoBehaviour
             }
 
         }
+
     }
 
 
