@@ -8,6 +8,7 @@ TagManager:
   - WindPower
   - ShrinkPower
   - DisguisePower
+  - AidBook
   layers:
   - Default
   - TransparentFX
@@ -48,9 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
-    uniqueID: 2064371729
-    locked: 0
   - name: Player
     uniqueID: 830054677
+    locked: 0
+  - name: Foreground
+    uniqueID: 2064371729
     locked: 0

@@ -6,6 +6,7 @@ public class PowerupManager : MonoBehaviour
 {   
     // Sprite for the empty powerup
     [SerializeField] Sprite powerupGot;
+    [SerializeField] Sprite otherSprite;
     [SerializeField] bool mushPowerGot = false;
     [SerializeField] bool windPowerGot = false;
     [SerializeField] bool shrinkPowerGot = false;
@@ -71,6 +72,11 @@ public class PowerupManager : MonoBehaviour
             collision.gameObject.GetComponent<SpriteRenderer>().sprite = powerupGot;
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             collision.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        }
+        if (collision.collider.CompareTag("AidBook"))
+        {
+        collision.gameObject.GetComponent<SpriteRenderer>().sprite = otherSprite;
+        collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;             //Turns off Collision
         }
     }
 
