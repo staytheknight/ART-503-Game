@@ -9,6 +9,7 @@ TagManager:
   - ShrinkPower
   - DisguisePower
   - AidBook
+  - AidBook2
   layers:
   - Default
   - TransparentFX

@@ -1,1 +1,7 @@
 minimap or arrow pointing to where you're supposed to go
+
+The instruction book should tell you to combine shrink and mushroom
+then another book later for mushroom + jump
+
+
+Add instructions on screen for shrink power and diguise power
